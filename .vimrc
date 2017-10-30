@@ -2,7 +2,6 @@ execute pathogen#infect()
 
 syntax enable
 
-
 " {{{1 Enable filetype specific settings
 set filetype=on
 
