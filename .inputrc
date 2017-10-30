@@ -1,0 +1,26 @@
+# Reference per queste impostazioni:
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
+
+# Abilita i "modi" di vim
+set editing-mode vi
+
+# Parti con l'insert mode di vim
+set keymap vi-insert
+
+# completamento case insensitive
+set completion-ignore-case on
+
+# completa '-' e '_' indifferentemente
+set completion-map-case on
+
+# Mostra tutti i possibili completamenti senza suonare la campanella
+set show-all-if-ambiguous on
+
+# Simile a "if-ambiguous", meglio usarli in combinazione
+set show-all-if-unmodified on
+
+# Evita che durante il completamento siano duplicate parti dopo il cursore
+set skip-completed-text on
+
+# Colora le parti già scritte durante l'autocompletamento
+set colored-completion-prefix on
