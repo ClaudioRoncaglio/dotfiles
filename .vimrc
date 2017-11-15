@@ -2,6 +2,7 @@ execute pathogen#infect()
 
 syntax enable
 
+
 " {{{1 Enable filetype specific settings
 set filetype=on
 
@@ -14,16 +15,16 @@ set ffs=unix,dos,mac
 " {{{1 Edit .vimrc in a vertical split window
 :noremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" {{{1 If the GUI is running or about to start
+" {{{1 Airline settings and font if the GUI is running
 if has("gui_running")
     " let's set a good-looking font
     set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 11
     " airline theme settings
     let g:airline_powerline_fonts = 1
-    let g:airline_theme='github'
+    let g:airline_theme='dracula'
 else
     let g:airline_powerline_fonts = 1
-    let g:airline_theme='github'
+    let g:airline_theme='dracula'
 endif
 
 " {{{1 Do not keep a backup files
@@ -78,7 +79,7 @@ set t_Co=256
 if &term =~ '256color'
     set t_ut=
 endif
-colorscheme materialbox
+colorscheme dracula
 set laststatus=2
 
 " {{{1 Show the matching bracket for the last ')'?
