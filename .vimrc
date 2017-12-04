@@ -1,7 +1,7 @@
 execute pathogen#infect()
 
+set nocompatible
 syntax enable
-
 
 " {{{1 Enable filetype specific settings
 set filetype=on
@@ -9,23 +9,33 @@ set filetype=on
 " {{{1 Set UTF-8 as standard encoding
 set encoding=utf8
 
+" {{{1 Enable filetype plugins
+filetype plugin on
+filetype indent on
+
 " {{{1 Use Unix as the standard file type
 set ffs=unix,dos,mac
 
 " {{{1 Edit .vimrc in a vertical split window
 :noremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" {{{1 Airline settings and font if the GUI is running
-if has("gui_running")
-    " let's set a good-looking font
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular\ 11
-    " airline theme settings
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme='dracula'
-else
-    let g:airline_powerline_fonts = 1
-    let g:airline_theme='dracula'
-endif
+" {{{1 Lightline configuration
+let g:lightline = {
+    \ 'colorscheme': 'Dracula',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+    \ },
+    \ 'component': {
+    \   'charvaluehex': '0x%B'
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \}
 
 " {{{1 Do not keep a backup files
 set nobackup
@@ -33,10 +43,6 @@ set nowritebackup
 
 " {{{1 Sets how many lines of history VIM has to remember
 set history=700
-
-" {{{1 Enable filetype plugins
-filetype plugin on
-filetype indent on
 
 " {{{1 Set to auto read when a file is changed from the outside
 set autoread
@@ -87,10 +93,6 @@ set showmatch
 
 " {{{1 Don't display mode
 set noshowmode
-
-" {{{1 Set status line
-" Disabled in favor to airline
-"set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 
 set hlsearch ignorecase incsearch lazyredraw  magic smartcase
 
@@ -161,3 +163,6 @@ autocmd FileType html,css,php,scss EmmetInstall
 
 " {{{1 Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+" {{{1 Enable vimwiki with markdown support
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '\md'}]
