@@ -4,7 +4,8 @@
 ! Great resources:
 !  - https://wiki.archlinux.org/index.php/rxvt-unicode
 !  - https://github.com/bookercodes/awesome-urxvt
-
+! -----------------------------------------------
+! To copy & paste use <ctrl+alt+c> <ctrl+alt+v>
 
 ! Set font family and size
 URxvt.font:       xft:SourceCodePro-Regular:size=10.5
@@ -14,11 +15,17 @@ URxvt.scrollBar:  false
 ! Setting transparency and background
 URxvt*depth:      32
 URxvt.background: [95]#282A36
+! Border settings
+URxvt.borderColor: #282A36
+URxvt.internalBorder: 2
 
 ! Cursor Settings
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
 !URxvt.cursorColor: #5AF78E
+
+! Disable the default ctrl-shift binding
+URxvt.iso14755: false
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -49,6 +56,7 @@ URxvt.cursorUnderline: 1
 ! fullscreen extension depend on wmctrl linux package
 ! Do not use any CTRL-SHIFT key binding!!!!
 URxvt.perl-ext-common:    fullscreen,resize-font,matcher
+
 
 ! Setting the keybindings for the extensions
 ! -----------------------------------------------
