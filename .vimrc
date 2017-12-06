@@ -165,4 +165,4 @@ autocmd FileType html,css,php,scss EmmetInstall
 let g:html_indent_tags = 'li\|p'
 
 " {{{1 Enable vimwiki with markdown support
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '\md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
