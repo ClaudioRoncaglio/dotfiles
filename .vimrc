@@ -85,31 +85,29 @@ if &compatible
     set nocompatible
 endif
 
-if exists('*minpac#init') " minpac is loaded.
-    call minpac#init()
-    call minpac#add('k-takata/minpac', {'type': 'opt'}) " Register minpac
-    " Additional plugins here.
-    call minpac#add('mattn/emmet-vim')
-    call minpac#add('2072/PHP-Indenting-for-VIm')
-    call minpac#add('itchyny/lightline.vim')
-    call minpac#add('StanAngeloff/php.vim')
-    call minpac#add('tomtom/tlib_vim')
-    call minpac#add('MarcWeber/vim-addon-mw-utils')
-    call minpac#add('tpope/vim-fugitive')
-    call minpac#add('fatih/vim-go')
-    call minpac#add('JamshedVesuna/vim-markdown-preview')
-    call minpac#add('tpope/vim-repeat')
-    call minpac#add('garbas/vim-snipmate')
-    call minpac#add('honza/vim-snippets')
-    call minpac#add('tpope/vim-surround')
-    call minpac#add('vimwiki/vimwiki')
-endif
+packadd minpac
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt'}) " Register minpac
+
+" Additional plugins
+call minpac#add('mattn/emmet-vim')
+call minpac#add('2072/PHP-Indenting-for-VIm')
+call minpac#add('itchyny/lightline.vim')
+call minpac#add('StanAngeloff/php.vim')
+call minpac#add('tomtom/tlib_vim')
+call minpac#add('MarcWeber/vim-addon-mw-utils')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('fatih/vim-go')
+call minpac#add('JamshedVesuna/vim-markdown-preview')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('garbas/vim-snipmate')
+call minpac#add('honza/vim-snippets')
+call minpac#add('tpope/vim-surround')
+call minpac#add('vimwiki/vimwiki')
 
 " Define user commands for updating/cleaning the plugins.
-" Each of them loads minpac, reloads .vimrc to register the
-" information of plugins, then performs the task.
-command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update()
-command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 " REMAPPING {{{1
 " Leader shortcuts {{{2
