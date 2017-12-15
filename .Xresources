@@ -15,8 +15,7 @@ URxvt.scrollBar:  false
 ! Setting transparency and background
 URxvt.depth:      32
 URxvt.background: [95]#282A36
-URxvt.transparent:   true
-URxvt.shading:       5
+
 ! Border settings
 URxvt.borderColor: #282A36
 URxvt.internalBorder: 2
@@ -24,7 +23,7 @@ URxvt.internalBorder: 2
 ! Cursor Settings
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
-!URxvt.cursorColor: #5AF78E
+URxvt.cursorColor: #50FA7B
 
 ! Disable the default ctrl-shift binding
 URxvt.iso14755: false

@@ -1,0 +1,1 @@
+text/html; /home/claudio/bin/firefox-nightly/firefox '%s'; description=HTML Text; test=test -n "$DISPLAY";  nametemplate=%s.html
