@@ -18,7 +18,7 @@ URxvt.background: [95]#282A36
 
 ! Border settings
 URxvt.borderColor: #282A36
-URxvt.internalBorder: 2
+!URxvt.internalBorder: 2
 
 ! Cursor Settings
 URxvt.cursorBlink: 1
