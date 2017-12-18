@@ -1,12 +1,12 @@
 " GENERAL SETTINGS {{{1
 syntax enable       " Enable syntax highlight
-set encoding=utf8   " Set default encoding
 set filetype=on     " Enable filetype specific settings
 filetype plugin on  " Load the plugin files for the file types 
 filetype indent on  " Load the indent file for the file types
-set history=700     " Sets how many lines fo history to remember
+set encoding=utf8   " Set default encoding
+set history=700     " Sets how many lines of history to remember
 set showmatch       " When a bracket is inserted, show the matching one
-set scrolloff=7     " Set 7 lines to the cursor when moving vertically using j/k
+set scrolloff=2     " Set scroll offset 2 lines from the cursor when moving vertically
 set ttimeoutlen=50  " Make Esc work faster
 
 " Backup Settings {{{2
@@ -24,9 +24,9 @@ set tabstop=4       " Number of visual spaces per tab
 set softtabstop=4   " Number of spaces in tab when editing
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set smarttab        " Automatically insert the right type of <tab>
-set autoindent      " Auto indent
-set smartindent     " Smart indent
-set wrap            " Wrap lines
+set autoindent      " Copy indent from current line when starting a new line
+set smartindent     " Autoindenting when starting a new line of code
+set wrap            " Wrap lines longer than the width of the window
 
 
 " SEARCH SETTINGS {{{1
@@ -36,7 +36,7 @@ set incsearch       " While typing, show if the pattern is matched
 set lazyredraw      " Redraw the screen only when necessary
 set magic           " Define how special characters are interpreted in pattern 
 set smartcase       " Override ignorecase when search contain uppercase characters
-set wildmenu        " Turn on the Wildmenu
+set wildmenu        " enhanced mode for command-line completion
 set completeopt=longest,menuone 
                     " Menu autocomplete (Ctrl+n) - richiede exuberant-ctags
 " UI CONFIGURATION {{{1
@@ -118,15 +118,18 @@ command! PackClean call minpac#clean()
 :noremap <leader>ev :vsplit $MYVIMRC<CR>
 :noremap <leader>h :help <C-r><C-w><CR>
 " Combination beginnig with [ and ] are used by vim-unimpaired
+
 " Function keys shortcuts {{{2
 " <F2> Toggle 'paste mode' for pasting indented code {{{3
 set pastetoggle=<F2>
+
 " <F3> Switch between various line number mode {{{3
 " absolute / relative / relative + absolute / no number
 nnoremap <F3> :call NumberToggle()<CR>
 
 " <F4> Retab and remove all trailing whitespace by pressing F4 {{{3
 nnoremap <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " <F5> Toggle visibility of invisible characters {{{3
 nnoremap <F5> :set list!<CR>
 
@@ -138,18 +141,20 @@ augroup configgroup
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType html,css,scss,sass,xml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType html,css,php,scss EmmetInstall
-    autocmd FileType html,php let g:html_indent_tags = 'li\|p'    " Treat <li> and <p> tags like block tags
+    autocmd FileType html,php let g:html_indent_tags = 'li\|p'
+                    " Treat <li> and <p> tags like block tags
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
     autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
     autocmd FileType go map <C-n> :cnext<CR>
     autocmd FileType go map <C-m> :cprevious<CR>
     autocmd FileType go nnoremap <leader>a :cclose<CR>
-    autocmd FileType go let g:go_list_type = "quickfix" " Put all the build issue in the quickfix-list 
-    autocmd FileType go let g:go_fmt_command = "goimports" " Replace the fmt tool with goimports
+    autocmd FileType go let g:go_list_type = "quickfix"
+                    " Put all the build issue in the quickfix-list 
+    autocmd FileType go let g:go_fmt_command = "goimports"
+                    " Replace the fmt tool with goimports
 augroup END
 
 " CUSTOM FUNCTIONS {{{1
-
 " Toggle absolute/relative/relative+absolute/no number
 function! NumberToggle()
     if(&number==1)
