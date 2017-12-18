@@ -123,5 +123,10 @@ export GOPATH="$HOME/code/go"
 # Setting tmux for 256 color terminal mode
 [ -z "$TMUX" ] && export TERM=xterm-256color
 
+# Settings vim enivironmet variables
+export VIMCONFIG=~/.vim
+export VIMDATA=~/.vim
+export VIMRC=~/.vimrc
+
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon

@@ -7,6 +7,7 @@ filetype indent on  " Load the indent file for the file types
 set history=700     " Sets how many lines fo history to remember
 set showmatch       " When a bracket is inserted, show the matching one
 set scrolloff=7     " Set 7 lines to the cursor when moving vertically using j/k
+set ttimeoutlen=50  " Make Esc work faster
 
 " Backup Settings {{{2
 " I prefer do not keep a backup file
@@ -90,16 +91,17 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'}) " Register minpac
 
 " Additional plugins
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-fugitive')
 call minpac#add('mattn/emmet-vim')
 call minpac#add('2072/PHP-Indenting-for-VIm')
 call minpac#add('itchyny/lightline.vim')
 call minpac#add('StanAngeloff/php.vim')
 call minpac#add('tomtom/tlib_vim')
 call minpac#add('MarcWeber/vim-addon-mw-utils')
-call minpac#add('tpope/vim-fugitive')
 call minpac#add('fatih/vim-go')
 call minpac#add('JamshedVesuna/vim-markdown-preview')
-call minpac#add('tpope/vim-repeat')
 call minpac#add('garbas/vim-snipmate')
 call minpac#add('honza/vim-snippets')
 call minpac#add('tpope/vim-surround')
@@ -111,9 +113,11 @@ command! PackClean call minpac#clean()
 
 " REMAPPING {{{1
 " Leader shortcuts {{{2
-:noremap <leader>ev :vsplit $MYVIMRC
-:noremap <leader>eh :split $MYVIMRC
+:noremap <leader>ee :edit $MYVIMRC<CR>
+:noremap <leader>eh :split $MYVIMRC<CR>
+:noremap <leader>ev :vsplit $MYVIMRC<CR>
 :noremap <leader>h :help <C-r><C-w><CR>
+" Combination beginnig with [ and ] are used by vim-unimpaired
 " Function keys shortcuts {{{2
 " <F2> Toggle 'paste mode' for pasting indented code {{{3
 set pastetoggle=<F2>
@@ -127,21 +131,21 @@ nnoremap <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <F5> :set list!<CR>
 
 " LANGUAGE SPECIFIC SETTINGS {{{1
-let g:user_emmet_install_global = 0
-let g:html_indent_tags = 'li\|p'    " Treat <li> and <p> tags like block tags
-let g:go_list_type = "quickfix" " Put all the build issue in the quickfix-list 
-let g:go_fmt_command = "goimports" " Replace the fmt tool with goimports
+let g:user_emmet_install_global = 0 " Disable emmet completion: it will be enabled by autocmd
 
 augroup configgroup
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType html,css,scss,sass,xml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType html,css,php,scss EmmetInstall
+    autocmd FileType html,php let g:html_indent_tags = 'li\|p'    " Treat <li> and <p> tags like block tags
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
     autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
     autocmd FileType go map <C-n> :cnext<CR>
     autocmd FileType go map <C-m> :cprevious<CR>
     autocmd FileType go nnoremap <leader>a :cclose<CR>
+    autocmd FileType go let g:go_list_type = "quickfix" " Put all the build issue in the quickfix-list 
+    autocmd FileType go let g:go_fmt_command = "goimports" " Replace the fmt tool with goimports
 augroup END
 
 " CUSTOM FUNCTIONS {{{1
@@ -169,7 +173,6 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
 
 "  VIMWIKI SETTINGS {{{1
 let g:vimwiki_list = [{'path': '~/Documenti/Personale/my_site/', 'path_html': '/var/www/html/my_site/'}]
