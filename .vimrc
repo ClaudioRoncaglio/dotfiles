@@ -112,6 +112,7 @@ command! PackClean call minpac#clean()
 " REMAPPING {{{1
 " Leader shortcuts {{{2
 :noremap <leader>ev :vsplit $MYVIMRC
+:noremap <leader>eh :split $MYVIMRC
 :noremap <leader>h :help <C-r><C-w><CR>
 " Function keys shortcuts {{{2
 " <F2> Toggle 'paste mode' for pasting indented code {{{3
@@ -122,12 +123,10 @@ nnoremap <F3> :call NumberToggle()<CR>
 
 " <F4> Retab and remove all trailing whitespace by pressing F4 {{{3
 nnoremap <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
 " <F5> Toggle visibility of invisible characters {{{3
 nnoremap <F5> :set list!<CR>
 
 " LANGUAGE SPECIFIC SETTINGS {{{1
-
 let g:user_emmet_install_global = 0
 let g:html_indent_tags = 'li\|p'    " Treat <li> and <p> tags like block tags
 let g:go_list_type = "quickfix" " Put all the build issue in the quickfix-list 
