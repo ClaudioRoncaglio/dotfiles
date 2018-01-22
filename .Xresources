@@ -8,22 +8,24 @@
 ! To copy & paste use <ctrl+alt+c> <ctrl+alt+v>
 
 ! Set font family and size
-URxvt.font:       xft:SourceCodePro-Regular:size=10.5
+URxvt.font:       xft:SourceCodePro-Regular:size=10
+
 ! Disable the scrollbar
 URxvt.scrollBar:  false
 
 ! Setting transparency and background
+! Real Transparency: don't work in i3... I don't konw why
 URxvt.depth:      32
 URxvt.background: [95]#282A36
 
 ! Border settings
 URxvt.borderColor: #282A36
-!URxvt.internalBorder: 2
+URxvt.internalBorder: 2
 
 ! Cursor Settings
 URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
-URxvt.cursorColor: #50FA7B
+!URxvt.cursorUnderline: 1
+URxvt.cursorColor: #f8f8f2
 
 ! Disable the default ctrl-shift binding
 URxvt.iso14755: false
@@ -56,6 +58,7 @@ URxvt.color15:    #E6E6E6
 ! Enable all the perl extension
 ! fullscreen extension depend on wmctrl linux package
 ! Do not use any CTRL-SHIFT key binding!!!!
+!URxvt.perl-lib: /home/claudio/.urxvt/ext
 URxvt.perl-ext-common:    fullscreen,resize-font,matcher
 
 
