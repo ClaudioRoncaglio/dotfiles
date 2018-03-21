@@ -7,6 +7,9 @@ set editing-mode vi
 # Parti con l'insert mode di vim
 set keymap vi-insert
 
+# Visualizza il modo vi corrente
+set show-mode-in-prompt off
+
 # completamento case insensitive
 set completion-ignore-case on
 
@@ -22,5 +25,8 @@ set show-all-if-unmodified on
 # Evita che durante il completamento siano duplicate parti dopo il cursore
 set skip-completed-text on
 
-# Colora le parti già scritte durante l'autocompletamento
-set colored-completion-prefix on
+# Appende uno slash ai symlink che puntano a directory
+set mark-symlinked-directories on
+
+# Colora i possibili completamenti a seconda del tipo di file
+set colored-stats on
