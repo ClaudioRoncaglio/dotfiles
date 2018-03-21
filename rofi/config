@@ -1,0 +1,3 @@
+rofi.terminal: urxvt
+rofi.theme: /usr/share/rofi/themes/myDracula.rasi
+rofi.show-icons: true
