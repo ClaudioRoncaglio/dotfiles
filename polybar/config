@@ -7,28 +7,27 @@
 ;
 ;=====================================================
 
-[dracula]
-background = #282a36
-selection = #44475a
-foreground = #f8f8f2
-indigo = #6272a4
-cyan = #8be9fd
-green = #50fa7b
-orange = #ffb86c
-pink = #ff79c6
+[gruvbox]
+background = #282828
+selection = #383838
+foreground = #ebdbb2
+blue = #458588
+cyan = #689d6a
+green = #b8bb26
+magenta = #d3869b
 purple = #bd93f9
-red = #ff5555
-yellow = #f1fa8c
+red = #fb4934
+yellow = #d79921
 
 
 [colors]
-background = ${dracula.background}
-background-alt = ${dracula.selection}
-foreground = ${dracula.indigo}
-foreground-alt = ${dracula.pink}
-underline = ${dracula.green}
-primary = ${dracula.green}
-secondary = ${dracula.red}
+background = ${gruvbox.background}
+background-alt = ${gruvbox.selection}
+foreground = ${gruvbox.yellow}
+foreground-alt = ${gruvbox.foreground}
+underline = ${gruvbox.yellow}
+primary = ${gruvbox.green}
+secondary = ${gruvbox.red}
 alert = #ff0000
 
 [bar/example]
@@ -63,7 +62,8 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=9:antialias=true;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem volume xkeyboard memory cpu wlan eth battery temperature date 
+#powermenu
 
 tray-position = right
 tray-padding = 2
@@ -93,7 +93,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${dracula.pink}
+format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.underline}
 
 label-layout = %layout%
@@ -110,7 +110,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#color.foreground}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -358,34 +358,34 @@ ramp-1 = 
 ramp-2 =  
 ramp-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+#[module/powermenu]
+#type = custom/menu
+#
+#expand-right = true
+#
+#format-spacing = 1
+#
+#label-open = 
+#label-open-foreground = ${colors.secondary}
+#label-close =  cancel
+#label-close-foreground = ${colors.secondary}
+#label-separator = |
+#label-separator-foreground = ${colors.foreground-alt}
+#
+#menu-0-0 = reboot
+#menu-0-0-exec = menu-open-1
+#menu-0-1 = power off
+#menu-0-1-exec = menu-open-2
+#
+#menu-1-0 = cancel
+#menu-1-0-exec = menu-open-0
+#menu-1-1 = reboot
+#menu-1-1-exec = sudo reboot
+#
+#menu-2-0 = power off
+#menu-2-0-exec = sudo poweroff
+#menu-2-1 = cancel
+#menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
