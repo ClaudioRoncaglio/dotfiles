@@ -8,47 +8,105 @@
 ! To copy & paste use <ctrl+alt+c> <ctrl+alt+v>
 
 ! Set font family and size
-URxvt.font:       xft:SourceCodePro-Regular:size=10
+URxvt.font:       xft:SourceCodePro-Regular:size=10.5
+/* URxvt.font:       xft:Hack:size=10.5 */
+Xft.autohint:   0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting:    true
+Xft.antialias:  true
+Xft.rgba:       rgb
 
 ! Disable the scrollbar
 URxvt.scrollBar:  false
-
-! Setting transparency and background
-! Real Transparency: don't work in i3... I don't konw why
-URxvt.depth:      32
-URxvt.background: [95]#282A36
-
-! Border settings
-URxvt.borderColor: #282A36
-URxvt.internalBorder: 2
+URxvt.print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+! URxvt.termName: xterm-256color
 
 ! Cursor Settings
 URxvt.cursorBlink: 1
+
 !URxvt.cursorUnderline: 1
-URxvt.cursorColor: #f8f8f2
 
 ! Disable the default ctrl-shift binding
 URxvt.iso14755: false
 
-! Dracula Xresources palette
-URxvt.foreground: #F8F8F2
-!URxvt.background: #282A36
-URxvt.color0:     #000000
-URxvt.color8:     #4D4D4D
-URxvt.color1:     #FF5555
-URxvt.color9:     #FF6E67
-URxvt.color2:     #50FA7B
-URxvt.color10:    #5AF78E
-URxvt.color3:     #F1FA8C
-URxvt.color11:    #F4F99D
-URxvt.color4:     #BD93F9
-URxvt.color12:    #CAA9FA
-URxvt.color5:     #FF79C6
-URxvt.color13:    #FF92D0
-URxvt.color6:     #8BE9FD
-URxvt.color14:    #9AEDFE
-URxvt.color7:     #BFBFBF
-URxvt.color15:    #E6E6E6
+! Setting transparency and background
+URxvt*depth:      32
+!URxvt.background: [95]#282828
+
+! Border settings
+URxvt.borderColor: #282828
+URxvt.internalBorder: 2
+
+! Gruvbox Xresources palette
+
+*.cursorColor:  #ebdbb2
+*.background: #282828
+*.foreground: #ebdbb2
+
+! black
+*.color0:       #282828
+*.color8:       #928374
+
+! red
+*.color1:       #cc241d
+*.color9:       #fb4934
+
+! green
+*.color2:       #98971a
+*.color10:      #b8bb26
+
+! yellow
+*.color3:       #d79921
+*.color11:      #fabd2f
+
+! blue
+*.color4:       #458588
+*.color12:      #83a598
+
+! magenta
+*.color5:       #b16286
+*.color13:      #d3869b
+
+! cyan
+*.color6:       #689d6a
+*.color14:      #8ec07c
+
+! white
+*.color7:       #a89984
+*.color15:      #ebdbb2
+
+! 256 color resources
+*.color24:  #076678
+*.color66:  #427b58
+*.color88:  #9d0006
+*.color96:  #8f3f71
+*.color100: #79740e
+*.color108: #8ec07c
+*.color109: #83a598
+*.color130: #af3a03
+*.color136: #b57614
+*.color142: #b8bb26
+*.color167: #fb4934
+*.color175: #d3869b
+*.color208: #fe8019
+*.color214: #fabd2f
+*.color223: #ebdbb2
+*.color228: #f4e8ba
+*.color229: #fdf4c1
+*.color230: #ffffc8
+*.color234: #1d2021
+*.color235: #282828
+*.color236: #32302f
+*.color237: #3c3836
+*.color239: #504945
+*.color241: #665c54
+*.color243: #7c6f64
+*.color244: #928374
+*.color245: #928374
+*.color246: #a89984
+*.color248: #bdae93
+*.color250: #d5c4a1
 
 ! -----------------------------------------------
 ! Extensions
@@ -58,7 +116,6 @@ URxvt.color15:    #E6E6E6
 ! Enable all the perl extension
 ! fullscreen extension depend on wmctrl linux package
 ! Do not use any CTRL-SHIFT key binding!!!!
-!URxvt.perl-lib: /home/claudio/.urxvt/ext
 URxvt.perl-ext-common:    fullscreen,resize-font,matcher
 
 

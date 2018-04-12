@@ -1,3 +1,25 @@
+" INTRO {{{1
+" Author: Claudio Roncaglio
+" License: GPL V3.0
+" Description: 
+" 
+" ASCII_ART:
+"        ________ ++     ________
+"       /VVVVVVVV\++++  /VVVVVVVV\
+"       \VVVVVVVV/++++++\VVVVVVVV/
+"        |VVVVVV|++++++++/VVVVV/'
+"        |VVVVVV|++++++/VVVVV/'
+"       +|VVVVVV|++++/VVVVV/'+
+"     +++|VVVVVV|++/VVVVV/'+++++
+"   +++++|VVVVVV|/VVV___++++++++++
+"     +++|VVVVVVVVVV/##/ +_+_+_+_
+"       +|VVVVVVVVV___ +/#_#,#_#,\
+"        |VVVVVVV//##/+/#/+/#/'/#/
+"        |VVVVV/'+/#/+/#/+/#/ /#/
+"        |VVV/'++/#/+/#/ /#/ /#/
+"        'V/'  /##//##//##//###/
+"                 ++
+
 " GENERAL SETTINGS {{{1
 syntax enable       " Enable syntax highlight
 set filetype=on     " Enable filetype specific settings
@@ -6,7 +28,7 @@ filetype indent on  " Load the indent file for the file types
 set encoding=utf8   " Set default encoding
 set history=700     " Sets how many lines of history to remember
 set showmatch       " When a bracket is inserted, show the matching one
-set scrolloff=2     " Set scroll offset 2 lines from the cursor when moving vertically
+set scrolloff=0     " Set no scroll offset lines from the cursor when moving vertically
 set ttimeoutlen=50  " Make Esc work faster
 
 " Backup Settings {{{2
@@ -46,11 +68,12 @@ set ruler           " Show the line and column number of cursor position
 set cmdheight=1     " Number of screen lines to use for the command-line
 set cursorline      " Highlight the current line 
 set number          " Show line numbers
+set relativenumber  " Show relative number
 set t_Co=256        " Number of colors
 if &term =~ '256color'
     set t_ut=       " Clearing uses the current background color
 endif
-colorscheme dracula " My favorite dark color scheme
+colorscheme gruvbox " My favorite dark color scheme
 set laststatus=2    " Show status line on every open windows
 set noshowmode      " Don't display mode because it's in lightline
 
@@ -60,7 +83,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " Lightline configuration {{{2
 let g:lightline = {
-    \ 'colorscheme': 'Dracula',
+    \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -103,11 +126,18 @@ call minpac#add('StanAngeloff/php.vim')
 call minpac#add('tomtom/tlib_vim')
 call minpac#add('MarcWeber/vim-addon-mw-utils')
 call minpac#add('fatih/vim-go')
-call minpac#add('JamshedVesuna/vim-markdown-preview')
 call minpac#add('garbas/vim-snipmate')
 call minpac#add('honza/vim-snippets')
 call minpac#add('godlygeek/tabular')
-call minpac#add('plasticboy/vim-markdown')
+call minpac#add('shinchu/lightline-gruvbox.vim')
+call minpac#add('morhetz/gruvbox')
+call minpac#add('christoomey/vim-tmux-navigator')
+call minpac#add('edkolev/tmuxline.vim')
+" call minpac#add('vim-pandoc/vim-pandoc')
+" call minpac#add('vim-pandoc/vim-pandoc-syntax')
+" call minpac#add('vim-pandoc/vim-pandoc-after')
+" call minpac#add('vim-pandoc/vim-markdownfootnotes')
+" call minpac#add('dhruvasagar/vim-table-mode')
 call minpac#add('vimwiki/vimwiki')
 
 " Define user commands for updating/cleaning the plugins.
@@ -137,13 +167,15 @@ nnoremap <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <F5> :set list!<CR>
 
 " LANGUAGE SPECIFIC SETTINGS {{{1
+"let g:vim_markdown_folding_disabled = 1 "Disable folding in markdown files
 let g:user_emmet_install_global = 0 " Disable emmet completion: it will be enabled by autocmd
+let g:vim_markdown_fenced_languages = ['html = html', 'bash = sh', 'css = css']
 
 augroup configgroup
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType html,css,scss,sass,xml setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html,css,php,scss EmmetInstall
+    autocmd FileType html,css,php,scss,xml,markdown EmmetInstall
     autocmd FileType html,php let g:html_indent_tags = 'li\|p'
                     " Treat <li> and <p> tags like block tags
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -167,7 +199,7 @@ function! NumberToggle()
         set relativenumber
         set number
       else
-        set norelativenumber
+          set norelativenumber
         set number
     endif
 endfunction

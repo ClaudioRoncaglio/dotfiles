@@ -91,9 +91,11 @@ fi
 alias ll='ls -l'
 alias la='ls -lA'
 alias l='ls -CF'
+alias rr='ranger'
+alias v='vim'
 
 # Git alias
-alias gitlog='git log --pretty=oneline --abbrev-commit'
+alias gitlog='git log --oneline --decorate --graph --all'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -115,13 +117,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/home/claudio/bin"
 
 # Setting the path for go language workspace
 export GOPATH="$HOME/code/go"
 
 # Setting tmux for 256 color terminal mode
-[ -z "$TMUX" ] && export TERM=xterm-256color
+[ -z "$TMUX" ] && export TERM=rxvt-unicode-256color
 
 # Settings vim enivironmet variables
 export VIMCONFIG=~/.vim

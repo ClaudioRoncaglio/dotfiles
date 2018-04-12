@@ -8,7 +8,7 @@ set editing-mode vi
 set keymap vi-insert
 
 # Visualizza il modo vi corrente
-set show-mode-in-prompt off
+set show-mode-in-prompt on
 
 # completamento case insensitive
 set completion-ignore-case on
