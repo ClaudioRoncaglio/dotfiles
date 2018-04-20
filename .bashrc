@@ -92,7 +92,10 @@ alias ll='ls -l'
 alias la='ls -lA'
 alias l='ls -CF'
 alias rr='ranger'
+alias nn='newsboat'
 alias v='vim'
+alias cl='clear'
+alias t='task'
 
 # Git alias
 alias gitlog='git log --oneline --decorate --graph --all'
