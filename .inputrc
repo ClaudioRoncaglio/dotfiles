@@ -7,7 +7,7 @@ set editing-mode vi
 # Parti con l'insert mode di vim
 set keymap vi-insert
 
-# Visualizza il modo vi corrente
+# Visualizza il modo vim corrente
 set show-mode-in-prompt on
 
 # completamento case insensitive
