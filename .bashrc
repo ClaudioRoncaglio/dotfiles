@@ -135,10 +135,10 @@ export VIMDATA=~/.vim
 export VIMRC=~/.vimrc
 
 # Added path to fzf fuzzy finder utility
-export $PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin
+export PATH="$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin"
 
 # Use ripgrep for fuzzy findind, excluding files in .gitignore
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
