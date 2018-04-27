@@ -65,6 +65,7 @@ set ruler           " Shows the line and column number of cursor position
 set cmdheight=1     " Number of screen lines to use for the command-line
 set cursorline      " Highlights the current line 
 set number          " Shows line numbers
+set relativenumber  " Shows relative numbers 
 if &term =~ '256color'
     set t_Co=256    "If terminal support it, enable 256 colors
     
@@ -134,13 +135,16 @@ command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
 " Remappings {{{1
-
 " Fuzzy finder (fzf using Ripgrep) {{{2
 " Install Ripgrep: https://vimawesome.com/plugin/ripgrep#installation
 " Using ripgrep to exclude files matched by .gitignore
 
 " Remap ctrl+p for fzf fuzzy finder
 nnoremap <C-P> :<C-u>FZF<CR>
+
+" TwiddleCase (use ~ to toggle selected words) {{{2
+" Remap tilde to toggle case of visual selected words
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Leader shortcuts {{{2
 :noremap <leader>ee :edit $MYVIMRC<CR>
@@ -216,4 +220,17 @@ function! s:build_go_files()
   elseif l:file =~# '^\f\+\.go$'
     call go#cmd#Build(0)
   endif
+endfunction
+
+" Toggle visual selectec text beetween UPPER, lower and Title case:
+"vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
 endfunction
