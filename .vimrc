@@ -147,9 +147,16 @@ nnoremap <C-P> :<C-u>FZF<CR>
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " Leader shortcuts {{{2
+" Hotkeys for various configuration files {{{3
 :noremap <leader>ee :edit $MYVIMRC<CR>
 :noremap <leader>eh :split $MYVIMRC<CR>
 :noremap <leader>ev :vsplit $MYVIMRC<CR>
+:noremap <leader>eb :split $HOME/.bashrc<CR>
+:noremap <leader>ex :split $HOME/.Xresources<CR>
+:noremap <leader>ei :split $HOME/.config/i3/config<CR>
+:noremap <leader>ep :split $HOME/.config/polybar/config<CR>
+:noremap <leader>et :split $HOME/.tmux.conf<CR>
+" Help for the current word {{{3
 :noremap <leader>h :help <C-r><C-w><CR>
 " Combination beginnig with [ and ] are used by vim-unimpaired
 
