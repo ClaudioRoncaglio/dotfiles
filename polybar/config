@@ -25,10 +25,10 @@ yellow = #d79921
 background = ${gruvbox.background}
 background-alt = ${gruvbox.selection}
 foreground = ${gruvbox.purple}
-foreground-alt = ${gruvbox.magenta}
-underline = ${gruvbox.cyan}
+foreground-alt = ${gruvbox.green}
+underline = ${gruvbox.magenta}
 primary = ${gruvbox.green}
-secondary = ${gruvbox.purple}
+secondary = ${gruvbox.selection}
 alert = ${gruvbox.red}
 
 [bar/example]
@@ -150,7 +150,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index% %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${gruvbox.magenta}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
