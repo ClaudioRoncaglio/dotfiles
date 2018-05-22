@@ -24,9 +24,9 @@ yellow = #d79921
 [colors]
 background = ${gruvbox.background}
 background-alt = ${gruvbox.selection}
-foreground = ${gruvbox.purple}
-foreground-alt = ${gruvbox.green}
-underline = ${gruvbox.magenta}
+foreground = ${gruvbox.blue}
+foreground-alt = ${gruvbox.white}
+underline = ${gruvbox.red}
 primary = ${gruvbox.green}
 secondary = ${gruvbox.selection}
 alert = ${gruvbox.red}
@@ -63,8 +63,18 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=9:antialias=true;1
 
 modules-left = i3
 modules-center = mpd
-modules-right = filesystem volume xkeyboard memory cpu wlan eth battery temperature date
-#powermenu
+modules-right = volume xkeyboard battery temperature date powermenu
+
+; ------------------------------
+; Modules not used:
+; ------------------------------
+;  - backlight-acpi 
+;  - wlan
+;  - eth
+;  - filesystem
+;  - memory
+;  - cpu
+; ------------------------------
 
 tray-position = right
 tray-padding = 2
@@ -150,7 +160,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index% %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${gruvbox.magenta}
+label-focused-underline= ${gruvbox.white}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -176,6 +186,7 @@ ws-icon-2 = 3;
 ws-icon-3 = 4; 
 ws-icon-4 = 5; 
 ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-default =  
 
 [module/mpd]
@@ -200,27 +211,27 @@ icon-stop-foreground = ${gruvbox.purple}
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-;[module/xbacklight]
-;type = internal/xbacklight
+[module/xbacklight]
+type = internal/backlight
 
-;format = <label> <bar>
-;label = BL
+format = <label> <bar>
+label = 
 
-;bar-width = 10
-;bar-indicator = |
-;bar-indicator-foreground = #ff
-;bar-indicator-font = 2
-;bar-fill = ─
-;bar-fill-font = 2
-;bar-fill-foreground = #9f78e1
-;bar-empty = ─
-;bar-empty-font = 2
-;bar-empty-foreground = ${colors.foreground-alt}
+bar-width = 5 
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
 
-;[module/backlight-acpi]
-;inherit = module/xbacklight
+[module/backlight-acpi]
+inherit = module/xbacklight
 ;type = internal/backlight
-;card = intel_backlight
+card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
@@ -244,6 +255,7 @@ interface = wlp6s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+;format-connected = <ramp-signal> wi-fi 
 format-connected-underline = ${colors.underline}
 label-connected = %essid%
 
@@ -368,34 +380,32 @@ ramp-1 = 
 ramp-2 =  
 ramp-foreground = ${colors.foreground-alt}
 
-#[module/powermenu]
-#type = custom/menu
-#
-#expand-right = true
-#
-#format-spacing = 1
-#
-#label-open = 
-#label-open-foreground = ${colors.secondary}
-#label-close =  cancel
-#label-close-foreground = ${colors.secondary}
-#label-separator = |
-#label-separator-foreground = ${colors.foreground-alt}
-#
-#menu-0-0 = reboot
-#menu-0-0-exec = menu-open-1
-#menu-0-1 = power off
-#menu-0-1-exec = menu-open-2
-#
-#menu-1-0 = cancel
-#menu-1-0-exec = menu-open-0
-#menu-1-1 = reboot
-#menu-1-1-exec = sudo reboot
-#
-#menu-2-0 = power off
-#menu-2-0-exec = sudo poweroff
-#menu-2-1 = cancel
-#menu-2-1-exec = menu-open-0
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.alert}
+label-close =  cancel
+label-close-foreground = ${colors.alert}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true

@@ -8,7 +8,7 @@
 ! To copy & paste use <ctrl+alt+c> <ctrl+alt+v>
 
 ! Set font family and size
-URxvt.font:       xft:SourceCodePro-Regular:size=10.5
+URxvt.font:       xft:SourceCodePro-Regular:size=11
 /* URxvt.font:       xft:Hack:size=10.5 */
 Xft.autohint:   0
 Xft.lcdfilter:  lcddefault
@@ -32,16 +32,16 @@ URxvt.iso14755: false
 
 ! Setting transparency and background
 URxvt*depth:      32
-!URxvt.background: [95]#282828
+URxvt.background: [85]#282828
 
 ! Border settings
-URxvt.borderColor: #282828
+URxvt.borderColor: [85]#282828
 URxvt.internalBorder: 2
 
 ! Gruvbox Xresources palette
 
 *.cursorColor:  #ebdbb2
-*.background: #282828
+!*.background: #282828
 *.foreground: #ebdbb2
 
 ! black
