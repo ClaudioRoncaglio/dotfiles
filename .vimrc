@@ -26,11 +26,12 @@ set filetype=on     " Enable filetype specific settings
 set autoindent      " Copy indent from current line when starting a new line
 filetype plugin on  " Load the plugin files for the file types 
 filetype indent on  " Load the indent file for the file types
+set omnifunc=syntaxcomplete#Complete
+                    " Smart autocomplation for programs with <ctrl+x><ctrl+o>
 set wrap            " Wrap lines longer than the width of the window
 set encoding=utf8   " Set default encoding
 set history=700     " Sets how many lines of history to remember
 set showmatch       " When a bracket is inserted, show the matching one
-"set scrolloff=2     " Set scroll offset 2 lines from the cursor when moving vertically
 set ttimeoutlen=50  " Make Esc work faster
 
 " Backup {{{2
@@ -52,10 +53,10 @@ set smarttab        " Automatically insert the right type of <tab>
 " Search Settings {{{1
 set hlsearch        " Highlights all matches of previous search pattern
 set ignorecase      " Perform case insensitive search 
+set smartcase       " Override ignorecase if search contain uppercase characters
 set incsearch       " While typing, show if the pattern is matched
 set lazyredraw      " Redraw the screen only when necessary
 set magic           " Define how special characters are interpreted in pattern 
-set smartcase       " Override ignorecase when search contain uppercase characters
 set wildmenu        " enhanced mode for command-line completion
 set completeopt=longest,menuone 
                     " Menu autocomplete (Ctrl+n) - requires exuberant-ctags
@@ -136,6 +137,7 @@ command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
 " Remappings {{{1
+
 " Fuzzy finder (fzf using Ripgrep) {{{2
 " Install Ripgrep: https://vimawesome.com/plugin/ripgrep#installation
 " Using ripgrep to exclude files matched by .gitignore
@@ -167,13 +169,13 @@ set pastetoggle=<F2>
 
 " <F3> Switches between various line number mode {{{3
 " absolute / relative / relative + absolute / no number
-nnoremap <F3> :call NumberToggle()<CR>
+nnoremap <special> <silent> <F3> :call NumberToggle()<CR>
 
 " <F4> Retabs and removes all trailing whitespace by pressing F4 {{{3
-nnoremap <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <special> <silent> <F4> :retab<CR> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " <F5> Toggles visibility of invisible characters {{{3
-nnoremap <F5> :set list!<CR>
+nnoremap <special> <silent> <F5> :set list!<CR>
 
 " Language specific settings {{{1
 "let g:vim_markdown_folding_disabled = 1 "Disables folding in markdown files
