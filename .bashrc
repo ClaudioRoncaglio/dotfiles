@@ -96,6 +96,8 @@ alias nn='newsboat'
 alias v='vim'
 alias cl='clear'
 alias t='task'
+alias q='exit'
+alias neo='neofetch --colors 6 5 3 4 3 7 --source wallpaper --backend w3m'
 
 # Git alias
 alias gitlog='git log --oneline --decorate --graph --all'

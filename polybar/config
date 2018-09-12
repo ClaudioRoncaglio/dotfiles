@@ -26,7 +26,7 @@ background = ${gruvbox.background}
 background-alt = ${gruvbox.selection}
 foreground = ${gruvbox.blue}
 foreground-alt = ${gruvbox.white}
-underline = ${gruvbox.red}
+underline = ${gruvbox.purple}
 primary = ${gruvbox.green}
 secondary = ${gruvbox.selection}
 alert = ${gruvbox.red}
@@ -63,7 +63,7 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=9:antialias=true;1
 
 modules-left = i3
 modules-center = mpd
-modules-right = volume xkeyboard battery temperature date powermenu
+modules-right = my-brightness volume xkeyboard battery temperature date powermenu
 
 ; ------------------------------
 ; Modules not used:
@@ -114,6 +114,15 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.underline}
+
+[module/my-brightness]
+type = custom/text
+content =   
+content-foreground = ${colors.foreground-alt}
+
+scroll-up = $HOME/.config/polybar/scripts/brightup
+scroll-down = $HOME/.config/polybar/scripts/brightdown
+
 
 [module/filesystem]
 type = internal/fs
@@ -309,22 +318,22 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
+label-volume =  ""
+label-volume-foreground = ${colors.foreground-alt}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
+format-muted-foreground = ${colors.foreground}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
+bar-volume-foreground-0 = ${gruvbox.green}
+bar-volume-foreground-1 = ${gruvbox.green}
+bar-volume-foreground-2 = ${gruvbox.green}
+bar-volume-foreground-3 = ${gruvbox.green}
+bar-volume-foreground-4 = ${gruvbox.green}
+bar-volume-foreground-5 = ${gruvbox.yellow}
+bar-volume-foreground-6 = ${gruvbox.red}
+bar-volume-gradient = true
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
@@ -365,6 +374,7 @@ animation-charging-framerate = 750
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
+interval = 5
 
 format = <ramp> <label>
 format-underline = ${colors.underline}

@@ -41,7 +41,7 @@ hide_edge_borders both
 
 # Definne inner and outer gaps in px
 gaps inner 10 
-gaps outer 0
+gaps outer 5
 
 # start a terminal
 bindsym $mod+Return exec urxvt
@@ -145,13 +145,13 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign application to a fixed workspace
 assign [class="Gimp"] $ws6
-
 for_window [title="GIMP Startup"] move workspace $ws6
 for_window [class="Gimp"] move workspace $ws6
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 ppt
 for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 ppt
 
 assign [class="Firefox"] $ws2
+assign [class="Code"] $ws3
 
 # Pulse Audio Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # increase sound volume
@@ -200,7 +200,7 @@ bindsym $mod+Shift+u exec --no-startup-id i3lock-fancy
 
 #Ctrl+Shift to switch from US to IT keyboard layout
 exec_always --no-startup-id "setxkbmap -layout us,it"
-exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+exec_always --no-startup-id "setxkbmap -option grp:alt_shift_toggle"
 
 # exec network manager applet on startup
 exec --no-startup-id nm-applet
@@ -209,17 +209,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id compton
 
 # load the desktop wallpaper
-exec_always --no-startup-id feh --bg-scale /home/claudio/Immagini/Wallpapers/SimonStalenhag/by_belltowers_2880.jpg
+exec_always --no-startup-id feh --bg-scale /home/claudio/Immagini/Wallpapers/mountainsdawn.jpg
 
 # launch mpd daemon
-#exec_always --no-startup-id "mpd $HOME/.config/mpd/mpd.conf"
-
-# launch in background a floating terminal running tmux
-#exec --no-startup-id urxvt --name=dropdown -e tmux
-#for_window [instance="dropdown"] floating enable;
-#for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; move scratchpad;
-
-# bindsym $mod+u [instance="dropdown"] scratchpad show
+exec_always --no-startup-id "mpd $HOME/.config/mpd/mpd.conf"
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

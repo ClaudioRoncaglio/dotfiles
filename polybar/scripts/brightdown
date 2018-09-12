@@ -1,0 +1,11 @@
+#!/bin/bash
+step=0.1
+max=10
+currentBright=`xrandr -q --verbose | grep -m 1 Brightness | awk -F : '{print $2}'`
+for video in `xrandr -q --verbose | grep ' connected' | awk '{print $1}'`; do
+    newBright=$(echo $currentBright - $step | bc)
+    inttop=$(echo "scale=0;$newBright*$max/1" | bc)
+    if [ "$inttop" -gt 0 ]; then
+        `xrandr --output $video --brightness $newBright`
+    fi
+done

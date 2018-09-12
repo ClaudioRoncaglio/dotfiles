@@ -27,7 +27,7 @@ set autoindent      " Copy indent from current line when starting a new line
 filetype plugin on  " Load the plugin files for the file types 
 filetype indent on  " Load the indent file for the file types
 set omnifunc=syntaxcomplete#Complete
-                    " Smart autocomplation for programs with <ctrl+x><ctrl+o>
+                    " Smart autocompletion for programs with <ctrl+x><ctrl+o>
 set wrap            " Wrap lines longer than the width of the window
 set encoding=utf8   " Set default encoding
 set history=700     " Sets how many lines of history to remember
@@ -136,8 +136,8 @@ call minpac#add('vimwiki/vimwiki')
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
+let g:gruvbox_contrast_dark = 'hard'
 " Remappings {{{1
-
 " Fuzzy finder (fzf using Ripgrep) {{{2
 " Install Ripgrep: https://vimawesome.com/plugin/ripgrep#installation
 " Using ripgrep to exclude files matched by .gitignore
@@ -161,7 +161,9 @@ command! PackClean call minpac#clean()
 :nnoremap <leader>et :edit $HOME/.tmux.conf<CR>
 " Help for the current word {{{3
 :noremap <leader>h :help <C-r><C-w><CR>
-" Combination beginnig with [ and ] are used by vim-unimpaired
+" Remove highlight for search {{{3
+:noremap <leader>s :nohl <CR>
+" Combination beginnig with [ and ] are used by vim-unimpaired {{{3
 
 " Functions keys shortcuts {{{2
 " <F2> Toggle 'paste mode' for pasting indented code {{{3
@@ -193,6 +195,8 @@ augroup webdev
     autocmd FileType html,css,php,scss,sass,less,xml,markdown EmmetInstall
     autocmd FileType html,php let g:html_indent_tags = 'li\|p'
                     " Treats <li> and <p> tags like block tags
+    autocmd FileType php imap jk $
+    autocmd FileType php imap kj ->
 augroup END
 
 augroup golang
@@ -249,3 +253,5 @@ function! TwiddleCase(str)
   endif
   return result
 endfunction
+
+" vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:

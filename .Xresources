@@ -31,7 +31,7 @@ URxvt.cursorBlink: 1
 URxvt.iso14755: false
 
 ! Setting transparency and background
-URxvt*depth:      32
+URxvt*depth:      24
 URxvt.background: [85]#282828
 
 ! Border settings
