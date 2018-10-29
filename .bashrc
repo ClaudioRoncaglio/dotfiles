@@ -23,6 +23,9 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Allows to cd into directory merely typing their name
+shopt -s autocd
+
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
@@ -141,6 +144,9 @@ export PATH="$PATH:$VIMCONFIG/pack/minpac/start/fzf/bin"
 
 # Use ripgrep for fuzzy findind, excluding files in .gitignore
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
+# Flip a table whenever a command fails with a non-zero exit status.
+PROMPT_COMMAND='[ $? -eq 0 ] || printf "\033[38;1;35m\n(╯°□°）╯\033[01;33m  ┻━┻\n\n\033[0;m"' 
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
