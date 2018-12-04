@@ -60,7 +60,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;38m\]\u\[\033[38;5;207m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;10m\]\u\[\033[33;01;12m\]@\[\033[00m\]\[\033[38;5;14m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\:\W\$ '
 fi
@@ -102,8 +102,12 @@ alias t='task'
 alias q='exit'
 alias neo='neofetch --colors 6 5 3 4 3 7 --source wallpaper --backend w3m'
 
+# Force ncmpcpp to load my (vim) keybindings
+alias ncmpcpp='ncmpcpp -b .config/ncmpcpp/bindings'
+
 # Git alias
 alias gitlog='git log --oneline --decorate --graph --all'
+alias gits='git status'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
